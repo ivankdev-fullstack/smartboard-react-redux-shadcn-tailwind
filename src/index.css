@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Global background */
+    --background: 217, 92%, 95%;
+    /* For Sections */
+    --section-background: 0, 0%, 100%;
+    /* Primary Colors */
+    --primary-black: 198, 10%, 20%;
+    --primary-blue: 217, 100%, 61%;
+    --primary-blue-light: 217, 100%, 95%;
+    --primary-white: 0, 0%, 100%;
+    /* Etc */
+    --border: 0, 0%, 91%;
+    --border-dark: 0, 0%, 75%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-primary-black;
+  }
+}
