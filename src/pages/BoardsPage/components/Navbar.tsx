@@ -1,42 +1,12 @@
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { FaCircleUser } from "react-icons/fa6";
-import { IoMdArrowDropdown } from "react-icons/io";
-import { RiShutDownLine } from "react-icons/ri";
-import Logo from "../../../assets/logo.png";
+import UserPopover from "@/components/UserPopover/UserPopover";
+import Logo from "../../../assets/darkLogo.png";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between items-center w-full h-[70px] bg-white text-primary-black border-b-4 border-primary-blue px-8">
+    <div className="flex justify-between items-center h-[70px] bg-white text-primary-black border-b-4 border-primary-blue px-8">
       <img className="block max-h-[30px] px-4" src={Logo} alt="logo" />
       <div className="border-l px-4">
-        <Popover>
-          <PopoverTrigger className="flex justify-center items-center gap-3">
-            <IoMdArrowDropdown
-              color="hsl(var(--primary-black))"
-              className="mb-[-3px]"
-            />
-            <div className="text-sm text-left font-bold mr-4">test test</div>
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" />
-            </Avatar>
-          </PopoverTrigger>
-          <PopoverContent className="bg-white p-2 w-64">
-            <div className="flex items-center gap-3 text-sm w-full cursor-pointer py-2 px-3 rounded hover:bg-border">
-              <FaCircleUser className="mb-[-1px]" />
-              Personal information
-            </div>
-            <hr className="my-2" />
-            <div className="flex items-center gap-3 text-sm font-bold w-full cursor-pointer py-2 px-3 rounded hover:bg-border">
-              <RiShutDownLine className="mb-[-1px]" color="red" />
-              Logout
-            </div>
-          </PopoverContent>
-        </Popover>
+        <UserPopover arrowDropdownColor="hsl(var(--primary-black))" />
       </div>
     </div>
   );

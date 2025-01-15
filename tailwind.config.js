@@ -33,7 +33,6 @@ module.exports = {
           DEFAULT: "hsl(var(--border))",
           dark: "hsl(var(--border-dark))",
         },
-        input: "hsl(var(--input))",
       },
     },
   },
