@@ -4,14 +4,16 @@ import BoardColumn from "./BoardColumn";
 
 const BoardContent = () => {
   return (
-    <div className="flex gap-7 h-full w-full overflow-scroll bg-white px-5 py-3.5">
+    <div className="flex gap-5 h-full w-full overflow-scroll bg-white pl-5 pr-20">
       {DEFAULT_COLUMNS.map((c) => (
         <BoardColumn key={c.id} title={c.title} color={c.color} />
       ))}
-      <FaCirclePlus
-        size={24}
-        className="text-column-line cursor-pointer p-0.5 mt-0.5 hover:text-primary-blue"
-      />
+      <div className="group w-full h-full p-4 cursor-pointer">
+        <FaCirclePlus
+          size={20}
+          className="text-column-line group-hover:text-primary-blue"
+        />
+      </div>
     </div>
   );
 };
