@@ -3,7 +3,7 @@ import BoardViewActions from "./components/BoardViewActions";
 
 const BoardPage = () => {
   return (
-    <div className="flex flex-col gap-0.5 my-2 mx-1">
+    <div className="flex flex-col h-screen w-full gap-0.5 mt-2 mx-1">
       <BoardViewActions />
       <BoardContent />
     </div>
