@@ -1,9 +1,5 @@
 import { Button } from "@/components/ui/button";
-import {
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import {
   Form,
   FormControl,
@@ -61,7 +57,7 @@ const CardFormDialog = () => {
       <DialogTitle className="mb-5 pb-3 border-b-[1px] border-border">
         Create new card
       </DialogTitle>
-      <DialogDescription>
+      <div>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
@@ -149,7 +145,7 @@ const CardFormDialog = () => {
             </Button>
           </form>
         </Form>
-      </DialogDescription>
+      </div>
     </DialogHeader>
   );
 };
