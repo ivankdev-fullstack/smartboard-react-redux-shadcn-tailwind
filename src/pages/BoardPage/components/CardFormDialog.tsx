@@ -21,11 +21,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { DEFAULT_STATUSES } from "@/data.ts";
+import { IStatus } from "@/types.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { DEFAULT_STATUSES, STATUS } from "../data";
 
 const formSchema = z.object({
   title: z.string().min(1),
@@ -44,7 +45,7 @@ const CardFormDialog = () => {
       status: "" as any,
     },
   });
-  const [selectedStatus, setSelectedStatus] = useState<STATUS | null>(null);
+  const [selectedStatus, setSelectedStatus] = useState<IStatus | null>(null);
 
   const onStatusSelect = (value: string) => {
     const newStatus = DEFAULT_STATUSES.find((status) => status.value === value);

@@ -1,6 +1,6 @@
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { FaCirclePlus } from "react-icons/fa6";
-import { DEFAULT_CARDS } from "../data";
+import { DEFAULT_CARDS } from "../../../data";
 import Card from "./Card";
 import CardFormDialog from "./CardFormDialog";
 
@@ -31,12 +31,7 @@ const BoardColumn = ({ title, color }: Props) => {
         {/* Cards */}
         <div className="flex flex-col gap-3 p-3">
           {DEFAULT_CARDS.map((c) => (
-            <Card
-              key={c.id}
-              id={c.id}
-              title={c.title}
-              description={c.description}
-            />
+            <Card key={c.id} data={c} />
           ))}
         </div>
         <div className="relative text-[13px] text-column-fg text-center py-1">

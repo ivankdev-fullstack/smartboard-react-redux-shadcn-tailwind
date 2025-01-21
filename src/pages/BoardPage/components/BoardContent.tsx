@@ -1,5 +1,5 @@
 import { FaCirclePlus } from "react-icons/fa6";
-import { DEFAULT_COLUMNS } from "../data";
+import { DEFAULT_COLUMNS } from "../../../data";
 import BoardColumn from "./BoardColumn";
 
 const BoardContent = () => {
