@@ -22,6 +22,7 @@ module.exports = {
           background: "hsl(var(--section-background))",
         },
         primary: {
+          red: "hsl(var(--primary-red))",
           black: "hsl(var(--primary-black))",
           blue: {
             DEFAULT: "hsl(var(--primary-blue))",
@@ -37,10 +38,12 @@ module.exports = {
           line: "hsl(var(--column-line))",
           fg: "hsl(var(--column-fg))",
           bg: "hsl(var(--column-bg))",
-          1: "hsl(var(--column-1))",
-          2: "hsl(var(--column-2))",
-          3: "hsl(var(--column-3))",
-          4: "hsl(var(--column-4))",
+          status: {
+            1: "hsl(var(--column-status-1))",
+            2: "hsl(var(--column-status-2))",
+            3: "hsl(var(--column-status-3))",
+            4: "hsl(var(--column-status-4))",
+          },
         },
       },
     },

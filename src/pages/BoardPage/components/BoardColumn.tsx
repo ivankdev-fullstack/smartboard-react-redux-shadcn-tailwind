@@ -1,6 +1,8 @@
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { FaCirclePlus } from "react-icons/fa6";
 import { DEFAULT_CARDS } from "../data";
 import Card from "./Card";
+import CardFormDialog from "./CardFormDialog";
 
 interface Props {
   title?: string;
@@ -39,12 +41,17 @@ const BoardColumn = ({ title, color }: Props) => {
         </div>
         <div className="relative text-[13px] text-column-fg text-center py-1">
           {!DEFAULT_CARDS.length && <p className="mb-3">No records</p>}
-          <div className="my-2">
-            <FaCirclePlus
-              size={20}
-              className="hidden absolute w-full bottom-[-13px] left-1/2 transform -translate-x-1/2 text-primary-blue cursor-pointer group-hover:block"
-            />
-          </div>
+          <Dialog>
+            <DialogTrigger>
+              <FaCirclePlus
+                size={20}
+                className="hidden absolute w-full bottom-[-13px] left-1/2 transform -translate-x-1/2 text-primary-blue cursor-pointer group-hover:block"
+              />
+            </DialogTrigger>
+            <DialogContent className="max-w-[700px]">
+              <CardFormDialog />
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </div>
