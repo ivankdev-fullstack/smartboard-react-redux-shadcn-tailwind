@@ -1,8 +1,19 @@
-import { DEFAULT_BOARDS } from "@/data";
+import { useBoards } from "@/hooks/useBoards";
 import { FaPlus } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 import BoardsGridItem from "./BoardsGridItem";
 
 const BoardsGrid = () => {
+  const { boards, handleAddBoard } = useBoards();
+  const navigate = useNavigate();
+
+  const redirectToBoardPage = (boardId: string) =>
+    navigate(`/board/${boardId}`);
+
+  const createNewBoard = async () => {
+    handleAddBoard("userId");
+  };
+
   return (
     <div className="flex flex-col">
       <div className="border-b text-xl font-medium py-2 mb-8">My Boards</div>
@@ -13,10 +24,15 @@ const BoardsGrid = () => {
               <FaPlus color="hsl(var(--primary-blue))" size={18} />
             </div>
           }
-          text="Add New Board"
+          data={{ name: "Add New Board" }}
+          onClick={createNewBoard}
         />
-        {DEFAULT_BOARDS.map((b) => (
-          <BoardsGridItem key={b.id} text={b.name} />
+        {boards?.map((b) => (
+          <BoardsGridItem
+            key={b.id}
+            data={b}
+            onClick={() => redirectToBoardPage(b.id)}
+          />
         ))}
       </div>
     </div>

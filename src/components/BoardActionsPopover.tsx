@@ -15,19 +15,43 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover.tsx";
-import { ReactNode } from "react";
+import { useBoards } from "@/hooks/useBoards";
+import { IBoard } from "@/types";
+import { ReactNode, useState } from "react";
 import { FaTrash } from "react-icons/fa";
 
 interface Props {
   triggerContent: ReactNode;
+  data: IBoard;
 }
 
-const BoardPopover = ({ triggerContent }: Props) => {
+const BoardActionsPopover = ({ triggerContent, data }: Props) => {
+  const { handleUpdateBoard, handleDeleteBoard } = useBoards();
+  const [isOpen, setIsOpen] = useState(false);
+  const [boardName, setBoardName] = useState(data.name);
+
+  const onDelete = () => handleDeleteBoard(data.id);
+
   return (
-    <Popover>
-      <PopoverTrigger>{triggerContent}</PopoverTrigger>
-      <PopoverContent className="bg-white p-2 w-64">
-        <Input className="w-full rounded border-dashed text-sm" />
+    <Popover open={isOpen} onOpenChange={setIsOpen}>
+      <PopoverTrigger onClick={(e) => e.stopPropagation()}>
+        {triggerContent}
+      </PopoverTrigger>
+      <PopoverContent
+        className="bg-white p-2 w-64"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <Input
+          className="w-full rounded border-dashed text-sm"
+          value={boardName}
+          onChange={(e) => setBoardName(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleUpdateBoard(data.id, boardName);
+              setIsOpen(false);
+            }
+          }}
+        />
         <hr className="my-2" />
         <AlertDialog>
           <AlertDialogTrigger className="w-full py-2 px-3 rounded hover:bg-border">
@@ -46,7 +70,12 @@ const BoardPopover = ({ triggerContent }: Props) => {
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction>Continue</AlertDialogAction>
+              <AlertDialogAction
+                className="text-white bg-primary-red"
+                onClick={onDelete}
+              >
+                Delete
+              </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
@@ -55,4 +84,4 @@ const BoardPopover = ({ triggerContent }: Props) => {
   );
 };
 
-export default BoardPopover;
+export default BoardActionsPopover;

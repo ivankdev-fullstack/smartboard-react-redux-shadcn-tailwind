@@ -7,11 +7,11 @@ export const DEFAULT_BOARDS: IBoard[] = [
   },
   {
     id: "2",
-    name: "Untitled Board 2 Untitled Board 2",
+    name: "Untitled Board 22323",
   },
   {
     id: "3",
-    name: "Untitled Board 3 Untitled Board 3 Untitled Board 3",
+    name: "Untitled Board 3",
   },
 ];
 
