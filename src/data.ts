@@ -1,4 +1,19 @@
-import { ICard, IColumn, IStatus } from "./types";
+import { IBoard, ICard, IColumn, IStatus } from "./types";
+
+export const DEFAULT_BOARDS: IBoard[] = [
+  {
+    id: "1",
+    name: "Untitled Board 1",
+  },
+  {
+    id: "2",
+    name: "Untitled Board 2 Untitled Board 2",
+  },
+  {
+    id: "3",
+    name: "Untitled Board 3 Untitled Board 3 Untitled Board 3",
+  },
+];
 
 export const DEFAULT_COLUMNS: IColumn[] = [
   {
