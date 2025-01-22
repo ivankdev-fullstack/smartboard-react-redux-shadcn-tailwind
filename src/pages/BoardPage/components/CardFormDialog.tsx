@@ -19,7 +19,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { DEFAULT_COLUMN_TYPES, DEFAULT_COLUMNS } from "@/data.ts";
 import { useCards } from "@/hooks/useCards";
-import { IColumn } from "@/types";
+import { ICard, IColumn } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -43,21 +43,23 @@ const formSchema = z.object({
 interface Props {
   type: "update" | "create";
   parentColumn: IColumn;
+  onClose: () => void;
+  cardData?: ICard | null;
 }
 
-const CardFormDialog = ({ type, parentColumn }: Props) => {
+const CardFormDialog = ({ type, parentColumn, onClose, cardData }: Props) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: "",
-      description: "",
-      status: "" as any,
+      title: cardData?.title,
+      description: cardData?.description || "",
+      status: parentColumn.type,
     },
   });
   const [selectedStatus, setSelectedStatus] = useState<IColumn>(parentColumn);
   const params = useParams();
   const boardId = params.id!;
-  const { handleAddCard } = useCards();
+  const { handleAddCard, handleUpdateCard } = useCards();
 
   const onStatusSelect = (value: string) => {
     const newStatus = DEFAULT_COLUMNS.find((c) => c.type === value);
@@ -68,12 +70,20 @@ const CardFormDialog = ({ type, parentColumn }: Props) => {
     if (type === "create") {
       handleAddCard({ ...data, boardId, columnId: selectedStatus!.id });
     }
+    if (type === "update") {
+      handleUpdateCard(cardData!.id, {
+        ...data,
+        boardId,
+        columnId: selectedStatus!.id,
+      });
+    }
+    onClose();
   };
 
   return (
     <DialogHeader>
       <DialogTitle className="mb-5 pb-3 border-b-[1px] border-border">
-        Create new card
+        {type === "create" ? "Create new card" : "Update card"}
       </DialogTitle>
       <div>
         <Form {...form}>
