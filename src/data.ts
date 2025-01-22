@@ -41,7 +41,6 @@ export const DEFAULT_CARDS: ICard[] = [
     title: "Fix Backlog issue",
     description: "Investigate and resolve issues in the backlog.",
     columnId: "1",
-    statusId: "1",
     boardId: "1",
   },
   {
@@ -49,7 +48,6 @@ export const DEFAULT_CARDS: ICard[] = [
     title: "Plan To Do tasks",
     description: "Outline tasks for the To Do column.",
     columnId: "2",
-    statusId: "2",
     boardId: "1",
   },
   {
@@ -57,7 +55,6 @@ export const DEFAULT_CARDS: ICard[] = [
     title: "Track In Progress tasks",
     description: "Ensure that tasks in progress are on schedule.",
     columnId: "3",
-    statusId: "3",
     boardId: "1",
   },
   {
@@ -65,7 +62,6 @@ export const DEFAULT_CARDS: ICard[] = [
     title: "Complete Done tasks",
     description: "Review and finalize tasks in the Done column.",
     columnId: "4",
-    statusId: "4",
     boardId: "1",
   },
 
@@ -75,7 +71,6 @@ export const DEFAULT_CARDS: ICard[] = [
     title: "Backlog review",
     description: "Go over the backlog for the new project.",
     columnId: "1",
-    statusId: "1",
     boardId: "2",
   },
   {
@@ -83,7 +78,6 @@ export const DEFAULT_CARDS: ICard[] = [
     title: "Organize To Do",
     description: "Organize tasks into the To Do list.",
     columnId: "2",
-    statusId: "2",
     boardId: "2",
   },
   {
@@ -91,7 +85,6 @@ export const DEFAULT_CARDS: ICard[] = [
     title: "Review ongoing tasks",
     description: "Ensure ongoing tasks are progressing smoothly.",
     columnId: "3",
-    statusId: "3",
     boardId: "2",
   },
   {
@@ -99,7 +92,6 @@ export const DEFAULT_CARDS: ICard[] = [
     title: "Verify completed tasks",
     description: "Double-check the work on completed tasks.",
     columnId: "4",
-    statusId: "4",
     boardId: "2",
   },
 
@@ -109,7 +101,6 @@ export const DEFAULT_CARDS: ICard[] = [
     title: "Backlog ideas",
     description: "Brainstorm new ideas for the backlog.",
     columnId: "1",
-    statusId: "1",
     boardId: "3",
   },
   {
@@ -117,7 +108,6 @@ export const DEFAULT_CARDS: ICard[] = [
     title: "Assign To Do tasks",
     description: "Distribute tasks from the To Do column.",
     columnId: "2",
-    statusId: "2",
     boardId: "3",
   },
   {
@@ -125,7 +115,6 @@ export const DEFAULT_CARDS: ICard[] = [
     title: "Monitor progress",
     description: "Check progress on active tasks.",
     columnId: "3",
-    statusId: "3",
     boardId: "3",
   },
   {
@@ -133,7 +122,6 @@ export const DEFAULT_CARDS: ICard[] = [
     title: "Archive finished work",
     description: "Move finished tasks to the archive.",
     columnId: "4",
-    statusId: "4",
     boardId: "3",
   },
 ];

@@ -18,10 +18,12 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { DEFAULT_COLUMN_TYPES, DEFAULT_COLUMNS } from "@/data.ts";
+import { useCards } from "@/hooks/useCards";
 import { IColumn } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
 import * as z from "zod";
 
 const formSchema = z.object({
@@ -38,7 +40,12 @@ const formSchema = z.object({
   ),
 });
 
-const CardFormDialog = () => {
+interface Props {
+  type: "update" | "create";
+  parentColumn: IColumn;
+}
+
+const CardFormDialog = ({ type, parentColumn }: Props) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -47,7 +54,10 @@ const CardFormDialog = () => {
       status: "" as any,
     },
   });
-  const [selectedStatus, setSelectedStatus] = useState<IColumn | null>(null);
+  const [selectedStatus, setSelectedStatus] = useState<IColumn>(parentColumn);
+  const params = useParams();
+  const boardId = params.id!;
+  const { handleAddCard } = useCards();
 
   const onStatusSelect = (value: string) => {
     const newStatus = DEFAULT_COLUMNS.find((c) => c.type === value);
@@ -55,7 +65,9 @@ const CardFormDialog = () => {
   };
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log(data);
+    if (type === "create") {
+      handleAddCard({ ...data, boardId, columnId: selectedStatus!.id });
+    }
   };
 
   return (
@@ -90,6 +102,7 @@ const CardFormDialog = () => {
                   <FormLabel>Status</FormLabel>
                   <FormControl>
                     <Select
+                      value={selectedStatus.type}
                       onValueChange={(value) => {
                         field.onChange(value);
                         onStatusSelect(value);
@@ -98,10 +111,10 @@ const CardFormDialog = () => {
                       <SelectTrigger
                         className="text-column-fg"
                         style={{
-                          justifyContent: selectedStatus ? "center" : "",
-                          backgroundColor: selectedStatus?.color || "white",
-                          color: selectedStatus ? "white" : "black",
-                          fontWeight: selectedStatus ? "bold" : "normal",
+                          justifyContent: "center",
+                          backgroundColor: selectedStatus?.color,
+                          color: "white",
+                          fontWeight: "bold",
                         }}
                       >
                         <SelectValue placeholder="Select Status" />

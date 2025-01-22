@@ -2,10 +2,10 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useCards } from "@/hooks/useCards";
 import { IColumn } from "@/types";
 import { FaCirclePlus } from "react-icons/fa6";
+import { useParams } from "react-router-dom";
 import { DEFAULT_CARDS } from "../../../data";
 import Card from "./Card";
 import CardFormDialog from "./CardFormDialog";
-import { useParams } from "react-router-dom";
 
 interface Props {
   data: IColumn;
@@ -49,7 +49,7 @@ const BoardColumn = ({ data }: Props) => {
               />
             </DialogTrigger>
             <DialogContent className="max-w-[700px]">
-              <CardFormDialog />
+              <CardFormDialog type="create" parentColumn={data} />
             </DialogContent>
           </Dialog>
         </div>
