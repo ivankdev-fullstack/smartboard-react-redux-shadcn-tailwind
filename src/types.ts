@@ -2,8 +2,8 @@ import { DEFAULT_COLUMN_TYPES } from "./data";
 
 export interface IUser {
   id: string;
-  name: string;
-  email: string;
+  username: string;
+  email?: string;
   password: string;
   img?: string;
 }
@@ -12,7 +12,6 @@ export interface IBoard {
   id: string;
   name: string;
   userId?: string;
-  // TODO: add img and color
 }
 
 export interface IColumn {

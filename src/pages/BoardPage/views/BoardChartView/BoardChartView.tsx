@@ -17,7 +17,6 @@ type ChartDataType = {
 const chartConfig = {
   desktop: {
     label: "Column Cards",
-    color: "hsl(var(--primary-blue))",
   },
 } satisfies ChartConfig;
 
@@ -53,7 +52,7 @@ const BoardChartView = () => {
             cursor={false}
             content={<ChartTooltipContent hideLabel />}
           />
-          <Bar dataKey="cardsCount" fill="hsl(var(--primary-blue))" radius={5}>
+          <Bar dataKey="cardsCount" radius={5}>
             {chartData.map((_, idx) => (
               <Cell key={`cell-${idx}`} fill={columnColors[idx]} />
             ))}

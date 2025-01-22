@@ -3,17 +3,23 @@ import UserPopover from "@/components/UserPopover";
 import { useBoard } from "@/hooks/useBoard";
 import { IBoard } from "@/types";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import LightLogo from "../../../assets/lightLogo.png";
 
 const Navbar = () => {
   const params = useParams();
   const boardId = params.id;
   const board = useBoard(boardId as string) as IBoard;
+  const navigation = useNavigate();
 
   return (
     <div className="flex justify-between items-center h-[50px] text-white bg-primary-blue px-8">
-      <img className="block max-h-[30px] px-4" src={LightLogo} alt="logo" />
+      <img
+        className="block max-h-[30px] px-4 cursor-pointer"
+        src={LightLogo}
+        alt="logo"
+        onClick={() => navigation("/boards")}
+      />
       <BoardActionsPopover
         triggerContent={
           <div className="flex items-center gap-3">

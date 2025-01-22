@@ -1,22 +1,33 @@
 import { createBrowserRouter } from "react-router-dom";
+import { NotFoundRoute } from "./components/NotFoundRoute";
+import { PrivateRoute } from "./components/PrivateRoute";
+import Layout from "./layout";
 import BoardPage from "./pages/BoardPage/BoardPage";
-import { BoardPageLayout } from "./pages/BoardPage/layout";
 import BoardsPage from "./pages/BoardsPage/BoardsPage";
-import { BoardsPageLayout } from "./pages/BoardsPage/layout";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import SignUpPage from "./pages/SignUpPage/SignUpPage";
 
 export const router = createBrowserRouter([
   {
-    path: "/boards",
-    element: <BoardsPageLayout />,
-    children: [{ index: true, element: <BoardsPage /> }],
-  },
-  {
-    path: "/board",
-    element: <BoardPageLayout />,
+    path: "/",
+    element: <Layout />,
+    errorElement: <NotFoundRoute />,
     children: [
       {
-        path: ":id",
-        element: <BoardPage />,
+        path: "/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/signup",
+        element: <SignUpPage />,
+      },
+      {
+        path: "/boards",
+        element: <PrivateRoute element={<BoardsPage />} />,
+      },
+      {
+        path: "/board/:id",
+        element: <PrivateRoute element={<BoardPage />} />,
       },
     ],
   },
