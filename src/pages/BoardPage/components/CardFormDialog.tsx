@@ -59,7 +59,7 @@ const CardFormDialog = ({ type, parentColumn, onClose, cardData }: Props) => {
   const [selectedStatus, setSelectedStatus] = useState<IColumn>(parentColumn);
   const params = useParams();
   const boardId = params.id!;
-  const { handleAddCard, handleUpdateCard } = useCards();
+  const { handleAddCard, handleUpdateCard, handleDeleteCard } = useCards();
 
   const onStatusSelect = (value: string) => {
     const newStatus = DEFAULT_COLUMNS.find((c) => c.type === value);
@@ -80,6 +80,8 @@ const CardFormDialog = ({ type, parentColumn, onClose, cardData }: Props) => {
     onClose();
   };
 
+  const onDeleteCard = () => handleDeleteCard(cardData!.id);
+
   return (
     <DialogHeader>
       <DialogTitle className="mb-5 pb-3 border-b-[1px] border-border">
@@ -89,7 +91,7 @@ const CardFormDialog = ({ type, parentColumn, onClose, cardData }: Props) => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-wrap w-full gap-10 justify-end"
+            className="flex flex-wrap w-full gap-10"
           >
             <FormField
               control={form.control}
@@ -166,12 +168,21 @@ const CardFormDialog = ({ type, parentColumn, onClose, cardData }: Props) => {
                 </FormItem>
               )}
             />
-            <Button
-              type="submit"
-              className="bg-primary-blue text-white font-bold"
-            >
-              Save
-            </Button>
+            <div className="w-full flex justify-between items-center">
+              <Button
+                className="bg-transparent border-primary-red text-primary-red font-bold"
+                variant="outline"
+                onClick={onDeleteCard}
+              >
+                Delete
+              </Button>
+              <Button
+                type="submit"
+                className="bg-primary-blue text-white font-bold"
+              >
+                Save
+              </Button>
+            </div>
           </form>
         </Form>
       </div>
