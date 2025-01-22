@@ -1,36 +1,41 @@
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { useCards } from "@/hooks/useCards";
+import { IColumn } from "@/types";
 import { FaCirclePlus } from "react-icons/fa6";
 import { DEFAULT_CARDS } from "../../../data";
 import Card from "./Card";
 import CardFormDialog from "./CardFormDialog";
+import { useParams } from "react-router-dom";
 
 interface Props {
-  title?: string;
-  color?: string;
-  cards?: [];
+  data: IColumn;
 }
 
-const BoardColumn = ({ title, color }: Props) => {
+const BoardColumn = ({ data }: Props) => {
+  // hook cards by column
+  const params = useParams();
+  // hook status by column
+  const { getCardsByBoardAndColumn } = useCards();
+  const cards = getCardsByBoardAndColumn(params.id!, data.id);
+
   return (
     <div className="flex flex-col w-[280px] gap-3 shrink-0 py-3">
       {/* Heading */}
       <div className="flex items-center gap-1">
         <div
-          style={{ backgroundColor: color }}
+          style={{ backgroundColor: data.color }}
           className="text-[13px] font-bold text-white w-full text-center py-1 rounded"
         >
-          {title}
+          {data.title}
         </div>
-        {/* NOTE: we get this from hook (redux) */}
+        {/* TODO: we get this from hook (redux) */}
         <div className="px-3 text-sm text-column-fg">0</div>
       </div>
-      {/* Content */}
       <div className="group bg-column-bg hover:pb-[33px] rounded-md">
-        {/* Line */}
         <div className="bg-column-line w-full h-[7px] rounded-t-md"></div>
         {/* Cards */}
         <div className="flex flex-col gap-3 p-3">
-          {DEFAULT_CARDS.map((c) => (
+          {cards?.map((c) => (
             <Card key={c.id} data={c} />
           ))}
         </div>

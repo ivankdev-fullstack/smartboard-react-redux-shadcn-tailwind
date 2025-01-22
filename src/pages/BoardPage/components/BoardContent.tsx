@@ -6,7 +6,7 @@ const BoardContent = () => {
   return (
     <div className="flex gap-5 h-full w-full overflow-scroll bg-white pl-5 pr-20">
       {DEFAULT_COLUMNS.map((c) => (
-        <BoardColumn key={c.id} title={c.title} color={c.color} />
+        <BoardColumn key={c.id} data={c} />
       ))}
       <div className="group w-full h-full p-4 cursor-pointer">
         <FaCirclePlus

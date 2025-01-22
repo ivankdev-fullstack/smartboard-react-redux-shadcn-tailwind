@@ -1,26 +1,11 @@
-export interface IStatus {
+import { DEFAULT_COLUMN_TYPES } from "./data";
+
+export interface IUser {
   id: string;
   name: string;
-  value: string;
-  color: string;
-}
-
-export interface ICard {
-  id: string;
-  title: string;
-  description?: string;
-  // FIX
-  columnId?: string;
-  statusId?: string;
-}
-
-export interface IColumn {
-  id: string;
-  title: string;
-  color: string;
-  cards: ICard[];
-  // FIX
-  boardId?: string;
+  email: string;
+  password: string;
+  img?: string;
 }
 
 export interface IBoard {
@@ -30,10 +15,18 @@ export interface IBoard {
   // TODO: add img and color
 }
 
-export interface IUser {
+export interface IColumn {
   id: string;
-  name: string;
-  email: string;
-  password: string;
-  img?: string;
+  title: string;
+  type: DEFAULT_COLUMN_TYPES;
+  color: string;
+}
+
+export interface ICard {
+  id: string;
+  title: string;
+  description?: string;
+  columnId: string;
+  statusId: string;
+  boardId: string;
 }

@@ -17,8 +17,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { DEFAULT_STATUSES } from "@/data.ts";
-import { IStatus } from "@/types.ts";
+import { DEFAULT_COLUMN_TYPES, DEFAULT_COLUMNS } from "@/data.ts";
+import { IColumn } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -27,9 +27,15 @@ import * as z from "zod";
 const formSchema = z.object({
   title: z.string().min(1),
   description: z.string().max(200).optional(),
-  status: z.enum(["BACKLOG", "TODO", "IN_PROGRESS", "DONE"], {
-    message: "Status must be selected",
-  }),
+  status: z.enum(
+    Object.values(DEFAULT_COLUMN_TYPES) as [
+      DEFAULT_COLUMN_TYPES,
+      ...DEFAULT_COLUMN_TYPES[]
+    ],
+    {
+      message: "Status must be selected",
+    }
+  ),
 });
 
 const CardFormDialog = () => {
@@ -41,10 +47,10 @@ const CardFormDialog = () => {
       status: "" as any,
     },
   });
-  const [selectedStatus, setSelectedStatus] = useState<IStatus | null>(null);
+  const [selectedStatus, setSelectedStatus] = useState<IColumn | null>(null);
 
   const onStatusSelect = (value: string) => {
-    const newStatus = DEFAULT_STATUSES.find((status) => status.value === value);
+    const newStatus = DEFAULT_COLUMNS.find((c) => c.type === value);
     if (newStatus) setSelectedStatus(newStatus);
   };
 
@@ -102,14 +108,14 @@ const CardFormDialog = () => {
                       </SelectTrigger>
                       <SelectContent className="bg-white">
                         <div className="flex flex-col gap-1">
-                          {DEFAULT_STATUSES.map((s) => (
+                          {DEFAULT_COLUMNS.map((c) => (
                             <SelectItem
-                              key={s.id}
-                              value={s.value}
+                              key={c.id}
+                              value={c.type}
                               className="justify-center text-white font-bold text-[13px]"
-                              style={{ background: s.color }}
+                              style={{ background: c.color }}
                             >
-                              {s.name}
+                              {c.title}
                             </SelectItem>
                           ))}
                         </div>
