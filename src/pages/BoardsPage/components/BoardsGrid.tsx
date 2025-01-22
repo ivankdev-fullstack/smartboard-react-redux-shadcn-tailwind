@@ -20,7 +20,7 @@ const BoardsGrid = () => {
       <div className="grid grid-cols-5 gap-6">
         <BoardsGridItem
           headerContent={
-            <div className="flex justify-center items-center w-[82px] h-[82px] rounded-md border border-dashed border-border-dark group-hover:border-primary-blue group-hover:bg-primary-blue-light">
+            <div className="flex justify-center items-center w-[82px] h-[82px] rounded-md border border-dashed border-border-dark group-hover:border-primary-blue group-hover:bg-primary-blue-light transition-all duration-200">
               <FaPlus color="hsl(var(--primary-blue))" size={18} />
             </div>
           }

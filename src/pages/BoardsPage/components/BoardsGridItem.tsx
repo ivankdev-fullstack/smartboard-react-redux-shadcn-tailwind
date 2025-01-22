@@ -12,7 +12,7 @@ interface Props {
 const BoardsGridItem = ({ headerContent, data, onClick }: Props) => {
   return (
     <div
-      className="group flex flex-col items-center w-[140px] min-h-[130px] h-full font-medium m-auto p-2 rounded-md hover:cursor-pointer hover:shadow-lg gap-3"
+      className="group flex flex-col items-center w-[140px] min-h-[130px] h-full font-medium m-auto p-2 rounded-md hover:cursor-pointer gap-3 transition-all duration-200 hover:shadow-lg"
       onClick={onClick}
     >
       {headerContent || (

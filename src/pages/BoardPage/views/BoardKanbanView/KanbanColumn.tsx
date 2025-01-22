@@ -55,7 +55,7 @@ const KanbanColumn = ({ data }: Props) => {
         </div>
         <div className="px-3 text-sm text-column-fg">{cards.length}</div>
       </div>
-      <div className="group bg-column-bg hover:pb-[28px] rounded-md">
+      <div className="group bg-column-bg hover:pb-[28px] rounded-md transition-all duration-200">
         <div className="bg-column-line w-full h-[7px] rounded-t-md"></div>
         <div className="flex flex-col gap-3 p-3">
           {cards?.map((c) => (
@@ -74,7 +74,7 @@ const KanbanColumn = ({ data }: Props) => {
             <DialogTrigger>
               <FaCirclePlus
                 size={20}
-                className="hidden absolute w-full bottom-[-10px] left-1/2 transform -translate-x-1/2 text-primary-blue cursor-pointer group-hover:block"
+                className="opacity-0 absolute w-full bottom-[5px] left-1/2 transform -translate-x-1/2 text-primary-blue cursor-pointer group-hover:block transition-all duration-200 ease-in-out group-hover:bottom-[-10px] group-hover:opacity-100"
               />
             </DialogTrigger>
             <DialogContent className="max-w-[700px]">

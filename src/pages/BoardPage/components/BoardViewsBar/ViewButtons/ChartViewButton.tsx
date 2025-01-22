@@ -9,7 +9,7 @@ interface Props {
 const ChartViewButton = ({ isActive, changeViewType }: Props) => {
   return (
     <div
-      className={`flex justify-center items-center group cursor-pointer w-[28px] h-[28px] rounded-md ${
+      className={`flex justify-center items-center group cursor-pointer w-[28px] h-[28px] rounded-md transition-all duration-200 ${
         isActive
           ? "bg-primary-pink hover:opacity-80"
           : "hover:bg-primary-pink-light"
@@ -18,7 +18,7 @@ const ChartViewButton = ({ isActive, changeViewType }: Props) => {
     >
       <FaChartArea
         size="18px"
-        className={`${
+        className={`transition-all duration-200 ${
           isActive
             ? "text-white"
             : "text-primary-gray group-hover:text-primary-pink"
