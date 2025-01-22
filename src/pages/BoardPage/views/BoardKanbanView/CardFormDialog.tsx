@@ -51,7 +51,7 @@ const CardFormDialog = ({ type, parentColumn, onClose, cardData }: Props) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: cardData?.title,
+      title: cardData?.title || "",
       description: cardData?.description || "",
       status: parentColumn.type,
     },

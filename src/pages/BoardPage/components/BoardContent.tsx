@@ -1,19 +1,15 @@
-import { FaCirclePlus } from "react-icons/fa6";
-import { DEFAULT_COLUMNS } from "../../../data";
-import BoardColumn from "./BoardColumn";
+import { BoardViewType } from "../BoardPage";
+import BoardKanbanView from "../views/BoardKanbanView/BoardKanbanView";
+import BoardChartView from "../views/BoardChartView/BoardChartView";
 
-const BoardContent = () => {
+interface Props {
+  boardView: BoardViewType;
+}
+
+const BoardContent = ({ boardView }: Props) => {
   return (
-    <div className="flex gap-5 h-full w-full overflow-scroll bg-white pl-5 pr-20">
-      {DEFAULT_COLUMNS.map((c) => (
-        <BoardColumn key={c.id} data={c} />
-      ))}
-      <div className="group w-full h-full p-4 cursor-pointer">
-        <FaCirclePlus
-          size={20}
-          className="text-column-line group-hover:text-primary-blue"
-        />
-      </div>
+    <div className="h-full w-full bg-white rounded-l-xl px-4">
+      {boardView === "kanban" ? <BoardKanbanView /> : <BoardChartView />}
     </div>
   );
 };

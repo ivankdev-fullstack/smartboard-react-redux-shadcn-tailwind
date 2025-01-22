@@ -22,13 +22,25 @@ module.exports = {
           background: "hsl(var(--section-background))",
         },
         primary: {
-          red: "hsl(var(--primary-red))",
+          white: "hsl(var(--white))",
           black: "hsl(var(--primary-black))",
+          red: "hsl(var(--primary-red))",
+          gray: {
+            DEFAULT: "hsl(var(--primary-gray))",
+            light: "hsl(var(--primary-gray-light))",
+          },
+          pink: {
+            DEFAULT: "hsl(var(--primary-pink))",
+            light: "hsl(var(--primary-pink-light))",
+          },
+          purple: {
+            DEFAULT: "hsl(var(--primary-purple))",
+            light: "hsl(var(--primary-purple-light))",
+          },
           blue: {
             DEFAULT: "hsl(var(--primary-blue))",
             light: "hsl(var(--primary-blue-light))",
           },
-          white: "hsl(var(--white))",
         },
         border: {
           DEFAULT: "hsl(var(--border))",

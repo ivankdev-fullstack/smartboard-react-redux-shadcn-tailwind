@@ -14,6 +14,12 @@
     --primary-blue-light: 217, 100%, 95%;
     --primary-white: 0, 0%, 100%;
     --primary-red: 0, 100%, 67%;
+    --primary-gray: 0, 0%, 34%;
+    --primary-gray-light: 0, 0%, 95%;
+    --primary-pink: 348, 80%, 62%;
+    --primary-pink-light: 348, 80%, 95%;
+    --primary-purple: 271, 61%, 53%;
+    --primary-purple-light: 271, 61%, 95%;
     /* Column Colors */
     --column-line: 217, 18%, 80%;
     --column-fg: 218, 5%, 55%;
@@ -36,6 +42,5 @@
   }
   body {
     @apply bg-background text-primary-black;
-    overflow-x: hidden;
   }
 }

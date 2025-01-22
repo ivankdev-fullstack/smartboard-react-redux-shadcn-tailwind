@@ -1,11 +1,17 @@
+import { useState } from "react";
 import BoardContent from "./components/BoardContent";
-import BoardViewActions from "./components/BoardViewActions";
+import BoardViewsBar from "./components/BoardViewsBar/BoardViewsBar";
+
+export type BoardViewType = "kanban" | "chart";
 
 const BoardPage = () => {
+  const [boardView, setBoardView] = useState<BoardViewType>("kanban");
+  document.body.style.overflow = "hidden";
+
   return (
-    <div className="flex flex-col h-screen w-full gap-0.5 mt-2 mx-1">
-      <BoardViewActions />
-      <BoardContent />
+    <div className="flex h-screen w-full gap-0.5 mt-2">
+      <BoardViewsBar boardView={boardView} setBoardView={setBoardView} />
+      <BoardContent boardView={boardView} />
     </div>
   );
 };

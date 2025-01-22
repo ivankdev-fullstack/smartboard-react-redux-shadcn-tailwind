@@ -4,7 +4,7 @@ import { ICard, IColumn } from "@/types";
 import { useState } from "react";
 import { FaCirclePlus } from "react-icons/fa6";
 import { useParams } from "react-router-dom";
-import { DEFAULT_CARDS } from "../../../data";
+import { DEFAULT_CARDS } from "../../../../data";
 import Card from "./Card";
 import CardFormDialog from "./CardFormDialog";
 
@@ -18,7 +18,7 @@ interface Props {
   data: IColumn;
 }
 
-const BoardColumn = ({ data }: Props) => {
+const KanbanColumn = ({ data }: Props) => {
   const params = useParams();
   const { getCardsByBoardAndColumn } = useCards();
   const cards = getCardsByBoardAndColumn(params.id!, data.id);
@@ -93,4 +93,4 @@ const BoardColumn = ({ data }: Props) => {
   );
 };
 
-export default BoardColumn;
+export default KanbanColumn;
