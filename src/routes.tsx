@@ -14,19 +14,19 @@ export const router = createBrowserRouter([
     errorElement: <NotFoundRoute />,
     children: [
       {
-        path: "/login",
+        path: "login",
         element: <LoginPage />,
       },
       {
-        path: "/signup",
+        path: "signup",
         element: <SignUpPage />,
       },
       {
-        path: "/boards",
+        path: "boards",
         element: <PrivateRoute element={<BoardsPage />} />,
       },
       {
-        path: "/board/:id",
+        path: "board/:id",
         element: <PrivateRoute element={<BoardPage />} />,
       },
     ],
