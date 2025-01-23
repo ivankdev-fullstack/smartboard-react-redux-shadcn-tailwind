@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { DEFAULT_COLUMN_TYPES, DEFAULT_COLUMNS } from "@/data.ts";
+import { DEFAULT_COLUMN_TYPES, DEFAULT_COLUMNS } from "@/data";
 import { useCards } from "@/hooks/useCards";
 import { ICard, IColumn } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";

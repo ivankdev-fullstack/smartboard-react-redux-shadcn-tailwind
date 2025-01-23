@@ -3,7 +3,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover.tsx";
+} from "@/components/ui/popover";
 import { useUser } from "@/hooks/useUser";
 import { FaCircleUser } from "react-icons/fa6";
 import { IoMdArrowDropdown } from "react-icons/io";

@@ -14,7 +14,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover.tsx";
+} from "@/components/ui/popover";
 import { useBoards } from "@/hooks/useBoards";
 import { IBoard } from "@/types";
 import { ReactNode, useState } from "react";
