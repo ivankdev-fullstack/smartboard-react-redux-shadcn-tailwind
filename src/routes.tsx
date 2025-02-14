@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { NotFoundRoute } from "./components/NotFoundRoute";
 import { PrivateRoute } from "./components/PrivateRoute";
+import { RedirectRootRoute } from "./components/RedirectRootRoute";
 import Layout from "./layout";
 import BoardPage from "./pages/BoardPage/BoardPage";
 import BoardsPage from "./pages/BoardsPage/BoardsPage";
@@ -13,6 +14,10 @@ export const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <NotFoundRoute />,
     children: [
+      {
+        path: "",
+        element: <RedirectRootRoute />,
+      },
       {
         path: "login",
         element: <LoginPage />,
